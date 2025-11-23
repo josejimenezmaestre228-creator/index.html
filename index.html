@@ -25,6 +25,10 @@ nav a:hover {background:#575757; transition:0.3s;}
 .contact {background:#333; color:white; padding:40px 20px; text-align:center;}
 .contact a {color:#ff6f61; text-decoration:none; font-weight:bold;}
 footer {background:#222; color:white; text-align:center; padding:20px 0;}
+#createRoutine input, #createRoutine textarea {width:100%; padding:10px; margin:5px 0 10px 0; border-radius:5px; border:1px solid #ccc;}
+#createRoutine button {background:#ff6f61; color:white; border:none; padding:10px 20px; border-radius:10px; font-weight:bold; cursor:pointer;}
+#createRoutine button:hover {background:#ff856d;}
+#tracking {background:white; padding:20px; border-radius:15px; margin-top:30px; box-shadow:0 5px 15px rgba(0,0,0,0.1);}
 @media(max-width:768px){header h1{font-size:2em;}}
 html, body {height:100%; width:100%; margin:0; padding:0;}
 </style>
@@ -33,28 +37,30 @@ html, body {height:100%; width:100%; margin:0; padding:0;}
 
 <header>
 <h1>GymMaster</h1>
-<p>Rutinas desde principiantes hasta profesionales</p>
+<p>Rutinas desde principiantes hasta profesionales, crea tus propias rutinas y sigue tu progreso</p>
 </header>
 
 <nav>
-<a href="#productos">Ejercicios</a>
+<a href="#rutinas">Rutinas</a>
 <a href="#premium">Premium</a>
+<a href="#createRoutine">Crear Rutina</a>
+<a href="#tracking">Seguimiento</a>
 <a href="#contacto">Contacto</a>
 </nav>
 
-<div class="container" id="productos">
+<div class="container" id="rutinas">
 <h2 style="text-align:center; margin-bottom:30px;">Rutinas Destacadas</h2>
 <div class="products">
     <div class="product">
         <img src="rutina_basica.png" alt="Rutina Básica">
         <h3>Rutina Básica</h3>
-        <p>Perfecta para principiantes, duración 20 min.</p>
+        <p>Principiantes, duración 20 min.</p>
         <a href="#" class="btn">Ver Detalles</a>
     </div>
     <div class="product">
         <img src="rutina_intermedia.png" alt="Rutina Intermedia">
         <h3>Rutina Intermedia</h3>
-        <p>Ejercicios para nivel medio, duración 45 min.</p>
+        <p>Nivel medio, duración 45 min.</p>
         <a href="#" class="btn">Ver Detalles</a>
     </div>
     <div class="product">
@@ -74,8 +80,36 @@ html, body {height:100%; width:100%; margin:0; padding:0;}
 
 <div class="container" id="premium">
 <h2>Plan Premium</h2>
-<p>Accede a todas las rutinas avanzadas, seguimiento de calorías y creación de tus propias rutinas.</p>
-<a href="#" class="btn">Suscribirse 50€/año</a>
+<p>Accede a todas las rutinas avanzadas, seguimiento de calorías y creación ilimitada de tus rutinas personales.</p>
+<a href="https://www.paypal.com/paypalme/gymmaster" class="btn">Suscribirse 50€/año</a>
+</div>
+
+<div class="container" id="createRoutine">
+<h2>Crea tu Rutina Personal</h2>
+<form>
+<input type="text" placeholder="Nombre de tu rutina" required>
+<textarea placeholder="Descripción y ejercicios" rows="4" required></textarea>
+<button type="submit">Crear Rutina</button>
+</form>
+<p>Nota: Puedes crear hasta 3 rutinas distintas con tu cuenta.</p>
+</div>
+
+<div class="container" id="tracking">
+<h2>Seguimiento de Calorías</h2>
+<p>Introduce tu entrenamiento diario para ver calorías quemadas aproximadas.</p>
+<form>
+<input type="number" placeholder="Minutos de entrenamiento" required>
+<button type="submit">Calcular Calorías</button>
+</form>
+<p id="caloriesResult">Calorías quemadas: 0</p>
+<script>
+document.querySelector('#tracking form').addEventListener('submit', function(e){
+e.preventDefault();
+let minutes = parseInt(this.querySelector('input').value);
+let burned = minutes * 8; // simulación: 8 cal/min
+document.getElementById('caloriesResult').innerText = 'Calorías quemadas: ' + burned;
+});
+</script>
 </div>
 
 <div class="contact" id="contacto">
