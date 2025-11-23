@@ -1,199 +1,97 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>GymMaster App</title>
-<style>
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
-body {font-family: 'Roboto', sans-serif; margin: 0; padding: 0; background-color: #f4f4f4;}
-header {background: linear-gradient(90deg, #4CAF50, #81C784); color: white; padding: 30px 0; text-align: center;}
-h1 {margin: 0; font-size: 2.5em;}
-nav {background-color: #333; display: flex; justify-content: center; flex-wrap: wrap;}
-nav a {color: white; padding: 14px 20px; text-decoration: none; display: block; font-weight: bold;}
-nav a:hover {background-color: #575757; transition: 0.3s;}
-.container {padding: 40px 20px; max-width: 1200px; margin: auto;}
-.section {display: none;}
-.section.active {display: block;}
-.exercise-grid {display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 30px;}
-.exercise {background-color: white; padding: 20px; border-radius: 15px; box-shadow: 0 5px 20px rgba(0,0,0,0.1); text-align: center;}
-.exercise img {max-width: 100%; border-radius: 10px;}
-.exercise h3 {margin: 10px 0;}
-.routine {background-color:white; padding:20px; border-radius:15px; margin-top:20px; box-shadow: 0 5px 15px rgba(0,0,0,0.1);}
-.routine ul {list-style:none; padding-left:0;}
-.btn {display: inline-block; margin-top: 10px; padding: 10px 20px; background-color: #4CAF50; color: white; text-decoration: none; border-radius: 10px; font-weight: bold; cursor:pointer; transition:0.3s;}
-.btn:hover {background-color:#81C784;}
-.contact {background-color: #333; color: white; padding: 40px 20px; text-align: center;}
-.contact a {color: #4CAF50; text-decoration: none; font-weight: bold;}
-footer {background-color: #222; color: white; text-align: center; padding: 20px 0;}
-@media (max-width: 768px){header h1{font-size:2em;}}
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GymMaster - Entrena Mejor</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {font-family: 'Roboto', sans-serif; margin:0; padding:0; background-color:#f9f9f9;}
+        header {background: linear-gradient(90deg, #ff6f61, #ff856d); color:white; text-align:center; padding:30px 0;}
+        header h1 {margin:0; font-size:2.5em;}
+        nav {background-color:#333; display:flex; justify-content:center;}
+        nav a {color:white; padding:14px 20px; text-decoration:none; font-weight:bold;}
+        nav a:hover {background-color:#575757; transition:0.3s;}
+        .container {padding:40px 20px; max-width:1200px; margin:auto;}
+        .section {margin-bottom:50px;}
+        .section h2 {text-align:center; margin-bottom:30px; font-size:2em; color:#333;}
+        .cards {display:grid; grid-template-columns:repeat(auto-fit,minmax(250px,1fr)); gap:30px;}
+        .card {background:white; padding:20px; border-radius:15px; box-shadow:0 5px 20px rgba(0,0,0,0.1); transition: transform 0.3s;}
+        .card:hover {transform:translateY(-5px);}
+        .card img {max-width:100%; border-radius:10px;}
+        .card h3 {margin:15px 0 10px; color:#333;}
+        .card p {color:#555; line-height:1.4;}
+        .btn {display:inline-block; margin-top:10px; padding:10px 20px; background-color:#ff6f61; color:white; text-decoration:none; border-radius:10px; font-weight:bold; transition:0.3s;}
+        .btn:hover {background-color:#ff856d;}
+        .contact {background-color:#333; color:white; padding:40px 20px; text-align:center;}
+        .contact a {color:#ff6f61; text-decoration:none; font-weight:bold;}
+        footer {background-color:#222; color:white; text-align:center; padding:20px 0;}
+        .premium {background-color:#fff3e0; padding:30px; border-radius:15px;}
+        .premium h3 {color:#ff6f61;}
+        @media(max-width:768px){header h1{font-size:2em;}}
+    </style>
 </head>
 <body>
 
 <header>
-<h1>GymMaster</h1>
-<p>Tu gimnasio online: tablas de ejercicios, rutinas y seguimiento de progreso</p>
+    <h1>GymMaster</h1>
+    <p>Tu gimnasio virtual: rutinas, seguimiento y planes premium</p>
 </header>
 
 <nav>
-<a href="#" onclick="showSection('tables')">Tablas de Ejercicios</a>
-<a href="#" onclick="showSection('bank')">Banco de Ejercicios</a>
-<a href="#" onclick="showSection('routine')">Creador de Rutinas</a>
-<a href="#" onclick="showSection('tracker')">Seguimiento Calorías</a>
-<a href="#" onclick="showSection('contact')">Contacto</a>
+    <a href="#gratis">Rutinas Gratis</a>
+    <a href="#premium">Plan Premium</a>
+    <a href="#contacto">Contacto</a>
 </nav>
 
-<div class="container">
-
-<!-- Tablas de Ejercicios -->
-<div id="tables" class="section active">
-<h2 style="text-align:center;">Tablas de Ejercicios</h2>
-<div class="exercise-grid">
-  <div class="exercise">
-    <img src="https://via.placeholder.com/150?text=Flexiones" alt="Flexiones">
-    <h3>Principiante - Suave</h3>
-    <p>Flexiones apoyadas, sentadillas, abdominales básicos.</p>
-  </div>
-  <div class="exercise">
-    <img src="https://via.placeholder.com/150?text=Plancha" alt="Plancha">
-    <h3>Intermedio - Duro</h3>
-    <p>Flexiones normales, sentadillas con peso, plancha lateral.</p>
-  </div>
-  <div class="exercise">
-    <img src="https://via.placeholder.com/150?text=Burpees" alt="Burpees">
-    <h3>Avanzado - Muy Duro</h3>
-    <p>Burpees, sentadillas con salto y peso, abdominales completos.</p>
-  </div>
-  <div class="exercise">
-    <img src="https://via.placeholder.com/150?text=HIIT" alt="HIIT">
-    <h3>Profesional - Extremo</h3>
-    <p>HIIT, flexiones avanzadas, planchas con peso, barra abdominal.</p>
-  </div>
-</div>
+<div class="container section" id="gratis">
+    <h2>Rutinas Gratis</h2>
+    <div class="cards">
+        <div class="card">
+            <img src="https://via.placeholder.com/250x200.png?text=Rutina+Principiante" alt="Rutina Principiante">
+            <h3>Rutina Principiante</h3>
+            <p>Ejercicios fáciles para empezar en casa o gimnasio, perfectos para tu primer mes.</p>
+        </div>
+        <div class="card">
+            <img src="https://via.placeholder.com/250x200.png?text=Rutina+Intermedia" alt="Rutina Intermedia">
+            <h3>Rutina Intermedia</h3>
+            <p>Aumenta tu fuerza y resistencia con ejercicios más exigentes y combinaciones de máquinas y peso libre.</p>
+        </div>
+        <div class="card">
+            <img src="https://via.placeholder.com/250x200.png?text=Rutina+Avanzada" alt="Rutina Avanzada">
+            <h3>Rutina Avanzada</h3>
+            <p>Desafío completo para mejorar fuerza, cardio y resistencia. Ideal para quienes buscan un entrenamiento intenso.</p>
+        </div>
+    </div>
 </div>
 
-<!-- Banco de Ejercicios -->
-<div id="bank" class="section">
-<h2 style="text-align:center;">Banco de Ejercicios</h2>
-<p>Elige ejercicios y crea tus propias rutinas:</p>
-<div class="exercise-grid" id="exerciseBank">
-  <div class="exercise">
-    <img src="https://via.placeholder.com/150?text=Sentadillas" alt="Sentadillas">
-    <h3>Sentadillas</h3>
-    <button class="btn" onclick="addToRoutine('Sentadillas')">Agregar a Rutina</button>
-  </div>
-  <div class="exercise">
-    <img src="https://via.placeholder.com/150?text=Flexiones" alt="Flexiones">
-    <h3>Flexiones</h3>
-    <button class="btn" onclick="addToRoutine('Flexiones')">Agregar a Rutina</button>
-  </div>
-  <div class="exercise">
-    <img src="https://via.placeholder.com/150?text=Abdominales" alt="Abdominales">
-    <h3>Abdominales</h3>
-    <button class="btn" onclick="addToRoutine('Abdominales')">Agregar a Rutina</button>
-  </div>
-  <div class="exercise">
-    <img src="https://via.placeholder.com/150?text=Plancha" alt="Plancha">
-    <h3>Plancha</h3>
-    <button class="btn" onclick="addToRoutine('Plancha')">Agregar a Rutina</button>
-  </div>
-</div>
+<div class="container section" id="premium">
+    <h2>Plan Premium</h2>
+    <div class="premium">
+        <h3>Incluye:</h3>
+        <ul>
+            <li>Rutinas exclusivas extremadamente avanzadas</li>
+            <li>Constructor de rutinas personalizadas</li>
+            <li>Seguimiento inteligente de calorías y progreso</li>
+            <li>Imágenes y videos demostrativos de cada ejercicio</li>
+            <li>Ejercicios en casa y en gimnasio</li>
+            <li>Mini retos y logros motivacionales</li>
+            <li>Contenido de nutrición y suplementación</li>
+        </ul>
+        <a href="#" class="btn">Suscribirme al Plan Premium</a>
+    </div>
 </div>
 
-<!-- Creador de Rutinas -->
-<div id="routine" class="section">
-<h2 style="text-align:center;">Tu Rutina Personalizada</h2>
-<div class="routine">
-<ul id="myRoutine">
-<li>No has agregado ejercicios aún</li>
-</ul>
-<button class="btn" onclick="clearRoutine()">Limpiar Rutina</button>
-</div>
-</div>
-
-<!-- Seguimiento de calorías -->
-<div id="tracker" class="section">
-<h2 style="text-align:center;">Seguimiento de Calorías</h2>
-<p>Introduce tus ejercicios y duración para estimar calorías quemadas:</p>
-<div class="routine">
-<label>Ejercicio:</label>
-<select id="exerciseSelect">
-<option value="Sentadillas">Sentadillas</option>
-<option value="Flexiones">Flexiones</option>
-<option value="Abdominales">Abdominales</option>
-<option value="Plancha">Plancha</option>
-<option value="Burpees">Burpees</option>
-</select>
-<label>Minutos:</label>
-<input type="number" id="duration" value="10">
-<button class="btn" onclick="calculateCalories()">Calcular</button>
-<p id="caloriesResult"></p>
-</div>
-</div>
-
-<!-- Contacto -->
-<div id="contact" class="section">
-<h2 style="text-align:center;">Contacto</h2>
-<p>Si tienes dudas o quieres más información:</p>
-<p>WhatsApp: <a href="https://wa.me/34633314139">633314139</a></p>
-<p>Email: <a href="mailto:gymmaster@gmail.com">gymmaster@gmail.com</a></p>
-</div>
-
+<div class="container section" id="contacto">
+    <h2>Contacto</h2>
+    <p>Para dudas, soporte o consultas de suscripción:</p>
+    <p>Email: <a href="mailto:gymmaster@gmail.com">gymmaster@gmail.com</a></p>
+    <p>Teléfono: <a href="tel:633314139">633314139</a></p>
 </div>
 
 <footer>
-<p>&copy; 2025 GymMaster. Todos los derechos reservados.</p>
+    <p>&copy; 2025 GymMaster. Todos los derechos reservados.</p>
 </footer>
-
-<script>
-function showSection(sectionId){
-  const sections = document.querySelectorAll('.section');
-  sections.forEach(s=>s.classList.remove('active'));
-  document.getElementById(sectionId).classList.add('active');
-}
-
-// Rutina
-let routine = [];
-function addToRoutine(exercise){
-  if(!routine.includes(exercise)){
-    routine.push(exercise);
-    updateRoutine();
-  }
-}
-function updateRoutine(){
-  const ul = document.getElementById('myRoutine');
-  ul.innerHTML = '';
-  routine.forEach(ex => {
-    const li = document.createElement('li');
-    li.textContent = ex;
-    ul.appendChild(li);
-  });
-  if(routine.length===0){
-    ul.innerHTML='<li>No has agregado ejercicios aún</li>';
-  }
-}
-function clearRoutine(){
-  routine=[];
-  updateRoutine();
-}
-
-// Calorías
-function calculateCalories(){
-  const exercise = document.getElementById('exerciseSelect').value;
-  const minutes = parseInt(document.getElementById('duration').value);
-  let calPerMin = 5; // base
-  switch(exercise){
-    case 'Sentadillas': calPerMin=8; break;
-    case 'Flexiones': calPerMin=7; break;
-    case 'Abdominales': calPerMin=6; break;
-    case 'Plancha': calPerMin=5; break;
-    case 'Burpees': calPerMin=12; break;
-  }
-  const total = calPerMin * minutes;
-  document.getElementById('caloriesResult').textContent=`Has quemado aproximadamente ${total} calorías.`;
-}
-</script>
 
 </body>
 </html>
