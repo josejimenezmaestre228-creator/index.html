@@ -3,35 +3,34 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>GymMaster - Tu App de Gimnasio</title>
+<title>GymMaster App</title>
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
-body {margin:0; padding:0; font-family:'Roboto', sans-serif; background:#f4f4f4;}
-header {background:#ff6f61; color:white; text-align:center; padding:20px;}
-header h1 {margin:0; font-size:2em;}
-nav {display:flex; justify-content:space-around; background:#333; flex-wrap:wrap; position:sticky; top:0; z-index:100;}
-nav button {color:white; background:none; border:none; padding:12px; font-weight:bold; cursor:pointer;}
-nav button:hover {background:#575757; border-radius:8px;}
-.section {display:none; padding:20px; max-width:600px; margin:auto;}
+body {margin:0;padding:0;font-family:'Roboto',sans-serif;background:#f4f4f4;}
+header {background:#ff6f61;color:white;text-align:center;padding:20px;}
+header h1 {margin:0;font-size:2em;}
+nav {display:flex;justify-content:space-around;background:#333;flex-wrap:wrap;position:sticky;top:0;z-index:100;}
+nav button {color:white;background:none;border:none;padding:12px;font-weight:bold;cursor:pointer;}
+nav button:hover {background:#575757;border-radius:8px;}
+.section {display:none;padding:20px;max-width:600px;margin:auto;}
 .section.active {display:block;}
-.card {background:white; border-radius:15px; box-shadow:0 5px 15px rgba(0,0,0,0.1); padding:15px; margin-bottom:20px; transition:transform 0.3s;}
+.card {background:white;border-radius:15px;box-shadow:0 5px 15px rgba(0,0,0,0.1);padding:15px;margin-bottom:20px;transition:transform 0.3s;}
 .card:hover {transform:translateY(-5px);}
-.card img {width:100%; border-radius:15px;}
+.card img {width:100%;border-radius:15px;}
 .card h3 {margin:10px 0 5px;}
-.card p {color:#555; line-height:1.4;}
-.btn {display:inline-block; padding:10px 20px; background:#ff6f61; color:white; text-decoration:none; border-radius:10px; font-weight:bold; margin-top:10px; text-align:center;}
-.btn:hover {background:#ff856d; cursor:pointer;}
-input, textarea {width:100%; padding:10px; margin:5px 0 10px 0; border-radius:5px; border:1px solid #ccc;}
-button.submitBtn {padding:10px 20px; border:none; border-radius:10px; font-weight:bold; background:#ff6f61; color:white; cursor:pointer;}
+.card p {color:#555;line-height:1.4;}
+.btn {display:inline-block;padding:10px 20px;background:#ff6f61;color:white;text-decoration:none;border-radius:10px;font-weight:bold;margin-top:10px;text-align:center;}
+.btn:hover {background:#ff856d;cursor:pointer;}
+input, textarea {width:100%;padding:10px;margin:5px 0 10px 0;border-radius:5px;border:1px solid #ccc;}
+button.submitBtn {padding:10px 20px;border:none;border-radius:10px;font-weight:bold;background:#ff6f61;color:white;cursor:pointer;}
 button.submitBtn:hover {background:#ff856d;}
-footer {background:#222; color:white; text-align:center; padding:15px 0; margin-top:20px;}
+footer {background:#222;color:white;text-align:center;padding:15px 0;margin-top:20px;}
 </style>
 </head>
 <body>
 
 <header>
 <h1>GymMaster</h1>
-<p>Tu app de gimnasio completa, crea rutinas y sigue tu progreso</p>
+<p>Tu app de gimnasio completa</p>
 </header>
 
 <nav>
@@ -55,25 +54,25 @@ footer {background:#222; color:white; text-align:center; padding:15px 0; margin-
 <section id="rutinas" class="section">
 <h2>Rutinas Destacadas</h2>
 <div class="card">
-<img src="rutina_basica.png" alt="Rutina Básica">
+<img src="https://via.placeholder.com/250x150.png?text=Rutina+Basica" alt="Rutina Básica">
 <h3>Rutina Básica</h3>
 <p>Principiantes, 20 min</p>
 <a href="#" class="btn">Ver Rutina</a>
 </div>
 <div class="card">
-<img src="rutina_intermedia.png" alt="Rutina Intermedia">
+<img src="https://via.placeholder.com/250x150.png?text=Rutina+Intermedia" alt="Rutina Intermedia">
 <h3>Rutina Intermedia</h3>
 <p>Nivel medio, 45 min</p>
 <a href="#" class="btn">Ver Rutina</a>
 </div>
 <div class="card">
-<img src="rutina_avanzada.png" alt="Rutina Avanzada">
+<img src="https://via.placeholder.com/250x150.png?text=Rutina+Avanzada" alt="Rutina Avanzada">
 <h3>Rutina Avanzada</h3>
 <p>Alta intensidad, 60 min</p>
 <a href="#" class="btn">Ver Rutina</a>
 </div>
 <div class="card">
-<img src="rutina_extrema.png" alt="Rutina Extrema">
+<img src="https://via.placeholder.com/250x150.png?text=Rutina+Extrema" alt="Rutina Extrema">
 <h3>Rutina Extrema</h3>
 <p>Expertos, 90 min</p>
 <a href="#" class="btn">Ver Rutina</a>
@@ -94,7 +93,7 @@ footer {background:#222; color:white; text-align:center; padding:15px 0; margin-
 <textarea placeholder="Descripción y ejercicios" rows="4" required></textarea>
 <button type="submit" class="submitBtn">Crear Rutina</button>
 </form>
-<p>Puedes crear hasta 3 rutinas gratis, para más necesitas Premium.</p>
+<p>Puedes crear hasta 3 rutinas gratis. Más requieren Premium.</p>
 </section>
 
 <!-- SEGUIMIENTO -->
@@ -135,38 +134,38 @@ footer {background:#222; color:white; text-align:center; padding:15px 0; margin-
 </footer>
 
 <script>
-// Función para mostrar secciones tipo app
+// Mostrar sección tipo app
 function showSection(sectionId){
-  document.querySelectorAll('.section').forEach(sec => sec.classList.remove('active'));
+  document.querySelectorAll('.section').forEach(sec=>sec.classList.remove('active'));
   document.getElementById(sectionId).classList.add('active');
 }
 
 // Ejercicios simulados
 const exercises = [
-  {name:'Flexiones', img:'ejercicio1.png', type:'Gratis'},
-  {name:'Sentadillas', img:'ejercicio2.png', type:'Gratis'},
-  {name:'Plancha Avanzada', img:'ejercicio3.png', type:'Premium'},
-  {name:'Burpees Extremos', img:'ejercicio4.png', type:'Premium'}
+  {name:'Flexiones', img:'https://via.placeholder.com/250x150.png?text=Flexiones', type:'Gratis'},
+  {name:'Sentadillas', img:'https://via.placeholder.com/250x150.png?text=Sentadillas', type:'Gratis'},
+  {name:'Plancha Avanzada', img:'https://via.placeholder.com/250x150.png?text=Plancha+Avanzada', type:'Premium'},
+  {name:'Burpees Extremos', img:'https://via.placeholder.com/250x150.png?text=Burpees+Extremos', type:'Premium'}
 ];
 
 const exerciseList = document.getElementById('exerciseList');
-exercises.forEach(ex => {
-  let card = document.createElement('div');
-  card.className = 'card';
-  card.innerHTML = `<img src="${ex.img}" alt="${ex.name}"><h3>${ex.name}</h3><p>${ex.type}</p>`;
+exercises.forEach(ex=>{
+  let card=document.createElement('div');
+  card.className='card';
+  card.innerHTML=`<img src="${ex.img}" alt="${ex.name}"><h3>${ex.name}</h3><p>${ex.type}</p>`;
   exerciseList.appendChild(card);
 });
 
 // Seguimiento calorías
-document.getElementById('trackingForm').addEventListener('submit', function(e){
+document.getElementById('trackingForm').addEventListener('submit',function(e){
   e.preventDefault();
-  let minutes = parseInt(this.querySelector('input').value);
-  let burned = minutes*8; // Simulación
+  let minutes=parseInt(this.querySelector('input').value);
+  let burned=minutes*8;
   document.getElementById('caloriesResult').innerText='Calorías quemadas: '+burned;
 });
 
 // Crear Rutina (simulación)
-document.getElementById('createRoutineForm').addEventListener('submit', function(e){
+document.getElementById('createRoutineForm').addEventListener('submit',function(e){
   e.preventDefault();
   alert('Rutina creada! (simulación)');
 });
