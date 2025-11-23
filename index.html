@@ -3,132 +3,116 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>GymMaster - La Mejor App de Gimnasio</title>
+<title>GymMaster - Tu App de Gimnasio</title>
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
-body {font-family:'Roboto', sans-serif; margin:0; padding:0; background:#f4f4f4;}
-header {background:#ff6f61; color:white; text-align:center; padding:30px 0;}
-header h1 {margin:0; font-size:2.5em;}
-header p {margin:5px 0 0 0; font-size:1.1em;}
-nav {background:#333; display:flex; justify-content:center; flex-wrap:wrap;}
-nav a {color:white; padding:14px 20px; text-decoration:none; font-weight:bold;}
+body {margin:0; padding:0; font-family:'Roboto',sans-serif; background:#f4f4f4;}
+header {background:#ff6f61; color:white; padding:20px; text-align:center;}
+header h1 {margin:0; font-size:2em;}
+header p {margin:5px 0 0 0; font-size:1em;}
+nav {display:flex; justify-content:space-around; background:#333; flex-wrap:wrap;}
+nav a {color:white; padding:12px; text-decoration:none; font-weight:bold;}
 nav a:hover {background:#575757; transition:0.3s;}
-.container {padding:40px 20px; max-width:1200px; margin:auto;}
-.products {display:grid; grid-template-columns:repeat(auto-fit, minmax(250px,1fr)); gap:30px;}
-.product, .exercise {background:white; padding:20px; border-radius:15px; box-shadow:0 5px 20px rgba(0,0,0,0.1); transition:transform 0.3s;}
-.product:hover, .exercise:hover {transform:translateY(-5px);}
-.product img, .exercise img {max-width:100%; border-radius:15px; height:auto;}
-.product h3, .exercise h3 {margin:15px 0 10px; font-size:1.3em; color:#333;}
-.product p, .exercise p {color:#555; line-height:1.4;}
-.btn {display:inline-block; margin-top:10px; padding:10px 20px; background:#ff6f61; color:white; text-decoration:none; border-radius:10px; font-weight:bold; transition:0.3s;}
+section {padding:20px; max-width:1200px; margin:auto;}
+.card {background:white; border-radius:15px; box-shadow:0 5px 15px rgba(0,0,0,0.1); padding:15px; margin-bottom:20px; transition:transform 0.3s;}
+.card:hover {transform:translateY(-5px);}
+.card img {width:100%; border-radius:15px;}
+.card h3 {margin:10px 0 5px 0;}
+.card p {color:#555; line-height:1.4;}
+.btn {display:inline-block; padding:10px 20px; background:#ff6f61; color:white; text-decoration:none; border-radius:10px; font-weight:bold; margin-top:10px;}
 .btn:hover {background:#ff856d; cursor:pointer;}
-.contact {background:#333; color:white; padding:40px 20px; text-align:center;}
-.contact a {color:#ff6f61; text-decoration:none; font-weight:bold;}
-footer {background:#222; color:white; text-align:center; padding:20px 0;}
-#createRoutine input, #createRoutine textarea {width:100%; padding:10px; margin:5px 0 10px 0; border-radius:5px; border:1px solid #ccc;}
-#createRoutine button {background:#ff6f61; color:white; border:none; padding:10px 20px; border-radius:10px; font-weight:bold; cursor:pointer;}
-#createRoutine button:hover {background:#ff856d;}
-#tracking {background:white; padding:20px; border-radius:15px; margin-top:30px; box-shadow:0 5px 15px rgba(0,0,0,0.1);}
-@media(max-width:768px){header h1{font-size:2em;}}
+#tracking input, #createRoutine input, #createRoutine textarea {width:100%; padding:10px; margin:5px 0 10px 0; border-radius:5px; border:1px solid #ccc;}
+#tracking button, #createRoutine button {padding:10px 20px; border:none; border-radius:10px; font-weight:bold; background:#ff6f61; color:white; cursor:pointer;}
+#tracking button:hover, #createRoutine button:hover {background:#ff856d;}
+footer {background:#222; color:white; text-align:center; padding:15px 0;}
+@media(max-width:768px){header h1{font-size:1.5em;}}
 </style>
 </head>
 <body>
 
 <header>
 <h1>GymMaster</h1>
-<p>Rutinas desde principiantes hasta profesionales, crea tus propias rutinas y sigue tu progreso</p>
+<p>Tu app de gimnasio completa, crea rutinas, sigue tu progreso y mejora cada día</p>
 </header>
 
 <nav>
 <a href="#rutinas">Rutinas</a>
 <a href="#exercises">Ejercicios</a>
-<a href="#premium">Premium</a>
 <a href="#createRoutine">Crear Rutina</a>
 <a href="#tracking">Seguimiento</a>
 <a href="#profile">Perfil</a>
+<a href="#premium">Premium</a>
 <a href="#contacto">Contacto</a>
 </nav>
 
-<!-- RUTINAS PREDEFINIDAS -->
-<div class="container" id="rutinas">
-<h2 style="text-align:center; margin-bottom:30px;">Rutinas Destacadas</h2>
-<div class="products">
-<div class="product">
+<!-- SECCIÓN RUTINAS -->
+<section id="rutinas">
+<h2>Rutinas Destacadas</h2>
+<div class="card">
 <img src="rutina_basica.png" alt="Rutina Básica">
 <h3>Rutina Básica</h3>
-<p>Principiantes, duración 20 min</p>
-<a href="#" class="btn">Ver Detalles</a>
+<p>Principiantes, 20 min</p>
+<a href="#" class="btn">Ver Rutina</a>
 </div>
-<div class="product">
+<div class="card">
 <img src="rutina_intermedia.png" alt="Rutina Intermedia">
 <h3>Rutina Intermedia</h3>
-<p>Nivel medio, duración 45 min</p>
-<a href="#" class="btn">Ver Detalles</a>
+<p>Nivel medio, 45 min</p>
+<a href="#" class="btn">Ver Rutina</a>
 </div>
-<div class="product">
+<div class="card">
 <img src="rutina_avanzada.png" alt="Rutina Avanzada">
 <h3>Rutina Avanzada</h3>
-<p>Alta intensidad, duración 60 min</p>
-<a href="#" class="btn">Ver Detalles</a>
+<p>Alta intensidad, 60 min</p>
+<a href="#" class="btn">Ver Rutina</a>
 </div>
-<div class="product">
+<div class="card">
 <img src="rutina_extrema.png" alt="Rutina Extrema">
 <h3>Rutina Extrema</h3>
-<p>Ejercicios para expertos, duración 90 min</p>
-<a href="#" class="btn">Ver Detalles</a>
+<p>Expertos, 90 min</p>
+<a href="#" class="btn">Ver Rutina</a>
 </div>
-</div>
-</div>
+</section>
 
-<!-- EJERCICIOS -->
-<div class="container" id="exercises">
-<h2 style="text-align:center; margin-bottom:30px;">Todos los Ejercicios</h2>
-<div class="products">
-<div class="exercise">
-<img src="ejercicio1.png" alt="Ejercicio 1">
+<!-- SECCIÓN EJERCICIOS -->
+<section id="exercises">
+<h2>Todos los Ejercicios</h2>
+<div class="card">
+<img src="ejercicio1.png" alt="Flexiones">
 <h3>Flexiones</h3>
-<p>Ejercicio gratis, trabaja pecho y brazos</p>
+<p>Gratis - Pecho y brazos</p>
 </div>
-<div class="exercise">
-<img src="ejercicio2.png" alt="Ejercicio 2">
+<div class="card">
+<img src="ejercicio2.png" alt="Sentadillas">
 <h3>Sentadillas</h3>
-<p>Ejercicio gratis, trabaja piernas y glúteos</p>
+<p>Gratis - Piernas y glúteos</p>
 </div>
-<div class="exercise">
-<img src="ejercicio3.png" alt="Ejercicio 3">
+<div class="card">
+<img src="ejercicio3.png" alt="Plancha Avanzada">
 <h3>Plancha Avanzada</h3>
-<p>Premium, abdominales y core</p>
+<p>Premium - Core y abdominales</p>
 </div>
-<div class="exercise">
-<img src="ejercicio4.png" alt="Ejercicio 4">
+<div class="card">
+<img src="ejercicio4.png" alt="Burpees Extremos">
 <h3>Burpees Extremos</h3>
-<p>Premium, full body intenso</p>
+<p>Premium - Full body intenso</p>
 </div>
-</div>
-</div>
-
-<!-- PLAN PREMIUM -->
-<div class="container" id="premium">
-<h2>Plan Premium</h2>
-<p>Accede a rutinas avanzadas, ejercicios premium, creación ilimitada de rutinas y seguimiento completo de tu progreso.</p>
-<a href="https://www.paypal.com/paypalme/josejimenezmaestre228" class="btn">Suscribirse 50€/año</a>
-</div>
+</section>
 
 <!-- CREAR RUTINA -->
-<div class="container" id="createRoutine">
+<section id="createRoutine">
 <h2>Crea tu Rutina Personal</h2>
 <form>
 <input type="text" placeholder="Nombre de tu rutina" required>
 <textarea placeholder="Descripción y ejercicios" rows="4" required></textarea>
 <button type="submit">Crear Rutina</button>
 </form>
-<p>Puedes crear hasta 3 rutinas gratis, las demás requieren plan Premium.</p>
-</div>
+<p>Puedes crear hasta 3 rutinas gratis, para más necesitas Premium.</p>
+</section>
 
 <!-- SEGUIMIENTO -->
-<div class="container" id="tracking">
-<h2>Seguimiento de Calorías y Pulsaciones</h2>
-<p>Introduce tu entrenamiento diario para ver calorías quemadas aproximadas.</p>
+<section id="tracking">
+<h2>Seguimiento de Progreso</h2>
 <form>
 <input type="number" placeholder="Minutos de entrenamiento" required>
 <button type="submit">Calcular Calorías</button>
@@ -138,30 +122,37 @@ footer {background:#222; color:white; text-align:center; padding:20px 0;}
 document.querySelector('#tracking form').addEventListener('submit', function(e){
 e.preventDefault();
 let minutes = parseInt(this.querySelector('input').value);
-let burned = minutes * 8; // simulación: 8 cal/min
-document.getElementById('caloriesResult').innerText = 'Calorías quemadas: ' + burned;
+let burned = minutes*8;
+document.getElementById('caloriesResult').innerText='Calorías quemadas: '+burned;
 });
 </script>
-</div>
+</section>
 
 <!-- PERFIL -->
-<div class="container" id="profile">
+<section id="profile">
 <h2>Perfil de Usuario</h2>
 <p>Nombre: Usuario Demo</p>
 <p>Rutinas creadas: 2</p>
 <p>Rutinas favoritas: Rutina Básica, Rutina Avanzada</p>
-<p>Progreso: 25% completado</p>
-</div>
+<p>Progreso: 25%</p>
+</section>
+
+<!-- PLAN PREMIUM -->
+<section id="premium">
+<h2>Plan Premium</h2>
+<p>Accede a rutinas avanzadas, ejercicios premium, creación ilimitada de rutinas y seguimiento completo.</p>
+<a href="https://www.paypal.com/paypalme/josejimenezmaestre228" class="btn">Suscribirse 50€/año</a>
+</section>
 
 <!-- CONTACTO -->
-<div class="contact" id="contacto">
+<section id="contacto">
 <h2>Contacto</h2>
 <p>Email: <a href="mailto:gymmaster@gmail.com">gymmaster@gmail.com</a></p>
 <p>Teléfono: <a href="tel:+34633314139">633314139</a></p>
-</div>
+</section>
 
 <footer>
-<p>&copy; 2025 GymMaster. Todos los derechos reservados.</p>
+<p>&copy; 2025 GymMaster. Todos los derechos reservados</p>
 </footer>
 
 </body>
