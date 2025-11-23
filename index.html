@@ -1,105 +1,83 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GymMaster - Entrena Mejor</title>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
-    <style>
-        body {font-family: 'Roboto', sans-serif; margin:0; padding:0; background-color:#f9f9f9;}
-        header {background: linear-gradient(90deg, #ff6f61, #ff856d); color:white; text-align:center; padding:30px 0;}
-        header h1 {margin:0; font-size:2.5em;}
-        nav {background-color:#333; display:flex; justify-content:center;}
-        nav a {color:white; padding:14px 20px; text-decoration:none; font-weight:bold;}
-        nav a:hover {background-color:#575757; transition:0.3s;}
-        .container {padding:40px 20px; max-width:1200px; margin:auto;}
-        .section {margin-bottom:50px;}
-        .section h2 {text-align:center; margin-bottom:30px; font-size:2em; color:#333;}
-        .cards {display:grid; grid-template-columns:repeat(auto-fit,minmax(250px,1fr)); gap:30px;}
-        .card {background:white; padding:20px; border-radius:15px; box-shadow:0 5px 20px rgba(0,0,0,0.1); transition: transform 0.3s;}
-        .card:hover {transform:translateY(-5px);}
-        .card img {max-width:100%; border-radius:10px;}
-        .card h3 {margin:15px 0 10px; color:#333;}
-        .card p {color:#555; line-height:1.4;}
-        .btn {display:inline-block; margin-top:10px; padding:10px 20px; background-color:#ff6f61; color:white; text-decoration:none; border-radius:10px; font-weight:bold; transition:0.3s;}
-        .btn:hover {background-color:#ff856d;}
-        .contact {background-color:#333; color:white; padding:40px 20px; text-align:center;}
-        .contact a {color:#ff6f61; text-decoration:none; font-weight:bold;}
-        footer {background-color:#222; color:white; text-align:center; padding:20px 0;}
-        .premium {background-color:#fff3e0; padding:30px; border-radius:15px;}
-        .premium h3 {color:#ff6f61;}
-        .premium-buttons {display:flex; justify-content:center; gap:20px; flex-wrap:wrap;}
-        @media(max-width:768px){header h1{font-size:2em;}}
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GymMaster - Tu App de Gimnasio</title>
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+    * {margin:0; padding:0; box-sizing:border-box;}
+    body {font-family:'Roboto', sans-serif; background:#f4f4f4; color:#333;}
+    header {background:#ff6f61; color:#fff; text-align:center; padding:20px;}
+    header h1 {font-size:1.8em; margin-bottom:5px;}
+    header p {font-size:1em;}
+    nav {display:flex; justify-content:center; background:#333;}
+    nav a {color:#fff; text-decoration:none; padding:10px 15px; font-weight:bold;}
+    nav a:hover {background:#575757;}
+    .container {padding:15px; max-width:100%; margin:auto;}
+    .products {display:grid; grid-template-columns:1fr; gap:15px;}
+    @media(min-width:600px){.products{grid-template-columns:1fr 1fr;}}
+    .product {background:#fff; border-radius:12px; box-shadow:0 4px 10px rgba(0,0,0,0.1); padding:15px;}
+    .product img {width:100%; border-radius:12px; height:auto;}
+    .product h3 {margin:10px 0; font-size:1.2em;}
+    .product p {margin:5px 0; line-height:1.4;}
+    .btn {display:inline-block; margin-top:10px; padding:8px 15px; background:#ff6f61; color:#fff; text-decoration:none; border-radius:8px; font-weight:bold;}
+    .btn:hover {background:#ff856d;}
+    .contact {background:#333; color:#fff; padding:20px; text-align:center;}
+    .contact a {color:#ff6f61; text-decoration:none;}
+    footer {background:#222; color:#fff; text-align:center; padding:15px;}
+</style>
 </head>
 <body>
-
 <header>
     <h1>GymMaster</h1>
-    <p>Tu gimnasio virtual: rutinas, seguimiento y planes premium</p>
+    <p>Rutinas desde principiantes hasta profesionales</p>
 </header>
 
 <nav>
-    <a href="#gratis">Rutinas Gratis</a>
-    <a href="#premium">Plan Premium</a>
+    <a href="#productos">Ejercicios</a>
+    <a href="#premium">Premium</a>
     <a href="#contacto">Contacto</a>
 </nav>
 
-<div class="container section" id="gratis">
-    <h2>Rutinas Gratis</h2>
-    <div class="cards">
-        <div class="card">
-            <img src="https://via.placeholder.com/250x200.png?text=Rutina+Principiante" alt="Rutina Principiante">
-            <h3>Rutina Principiante</h3>
-            <p>Ejercicios fáciles para empezar en casa o gimnasio, perfectos para tu primer mes.</p>
+<div class="container" id="productos">
+    <h2>Ejercicios Destacados</h2>
+    <div class="products">
+        <div class="product">
+            <img src="robotxiaomi.png" alt="Robot Xiaomi E5">
+            <h3>Rutina Básica</h3>
+            <p>Perfecta para principiantes, duración 20 min.</p>
+            <a href="#" class="btn">Ver Detalles</a>
         </div>
-        <div class="card">
-            <img src="https://via.placeholder.com/250x200.png?text=Rutina+Intermedia" alt="Rutina Intermedia">
+        <div class="product">
+            <img src="batidora.png" alt="Batidora Mini">
             <h3>Rutina Intermedia</h3>
-            <p>Aumenta tu fuerza y resistencia con ejercicios más exigentes y combinaciones de máquinas y peso libre.</p>
+            <p>Ejercicios para nivel medio, duración 45 min.</p>
+            <a href="#" class="btn">Ver Detalles</a>
         </div>
-        <div class="card">
-            <img src="https://via.placeholder.com/250x200.png?text=Rutina+Avanzada" alt="Rutina Avanzada">
+        <div class="product">
+            <img src="patinete.png" alt="Patinete Electrico">
             <h3>Rutina Avanzada</h3>
-            <p>Desafío completo para mejorar fuerza, cardio y resistencia. Ideal para quienes buscan un entrenamiento intenso.</p>
+            <p>Alta intensidad, duración 60 min.</p>
+            <a href="#" class="btn">Ver Detalles</a>
         </div>
     </div>
 </div>
 
-<div class="container section" id="premium">
+<div class="container" id="premium">
     <h2>Plan Premium</h2>
-    <div class="premium">
-        <h3>Incluye:</h3>
-        <ul>
-            <li>Rutinas exclusivas extremadamente avanzadas</li>
-            <li>Constructor de rutinas personalizadas</li>
-            <li>Seguimiento inteligente de calorías y progreso</li>
-            <li>Imágenes y videos demostrativos de cada ejercicio</li>
-            <li>Ejercicios en casa y en gimnasio</li>
-            <li>Mini retos y logros motivacionales</li>
-            <li>Contenido de nutrición y suplementación</li>
-        </ul>
-        <div class="premium-buttons">
-            <a href="https://www.paypal.com/paypalme/josejimenezmaestre228/5" class="btn" target="_blank">
-                Suscribirme 5€/mes
-            </a>
-            <a href="https://www.paypal.com/paypalme/josejimenezmaestre228/50" class="btn" target="_blank">
-                Suscribirme 50€/año
-            </a>
-        </div>
-    </div>
+    <p>Accede a todas las rutinas avanzadas, seguimiento de calorías y más.</p>
+    <a href="#" class="btn">Suscribirse 50€/año</a>
 </div>
 
-<div class="container section" id="contacto">
+<div class="contact" id="contacto">
     <h2>Contacto</h2>
-    <p>Para dudas, soporte o consultas de suscripción:</p>
-    <p>Email: <a href="mailto:josejimenezmaestre228@gmail.com">josejimenezmaestre228@gmail.com</a></p>
-    <p>Teléfono: <a href="tel:633314139">633314139</a></p>
+    <p>Email: <a href="mailto:gymmaster@gmail.com">gymmaster@gmail.com</a></p>
+    <p>Teléfono: <a href="tel:+34633314139">633314139</a></p>
 </div>
 
 <footer>
     <p>&copy; 2025 GymMaster. Todos los derechos reservados.</p>
 </footer>
-
 </body>
 </html>
