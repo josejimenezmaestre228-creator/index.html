@@ -24,6 +24,10 @@ input, textarea {width:100%;padding:10px;margin:5px 0 10px 0;border-radius:5px;b
 button.submitBtn {padding:10px 20px;border:none;border-radius:10px;font-weight:bold;background:#ff6f61;color:white;cursor:pointer;}
 button.submitBtn:hover {background:#ff856d;}
 footer {background:#222;color:white;text-align:center;padding:15px 0;margin-top:20px;}
+.modal {display:none;position:fixed;z-index:200;left:0;top:0;width:100%;height:100%;overflow:auto;background:rgba(0,0,0,0.6);}
+.modal-content {background:#fff;margin:10% auto;padding:20px;border-radius:15px;max-width:500px;position:relative;}
+.close {color:#aaa;float:right;font-size:28px;font-weight:bold;cursor:pointer;}
+.close:hover{color:black;}
 </style>
 </head>
 <body>
@@ -53,30 +57,7 @@ footer {background:#222;color:white;text-align:center;padding:15px 0;margin-top:
 <!-- RUTINAS -->
 <section id="rutinas" class="section">
 <h2>Rutinas Destacadas</h2>
-<div class="card">
-<img src="https://via.placeholder.com/250x150.png?text=Rutina+Basica" alt="Rutina Básica">
-<h3>Rutina Básica</h3>
-<p>Principiantes, 20 min</p>
-<a href="#" class="btn">Ver Rutina</a>
-</div>
-<div class="card">
-<img src="https://via.placeholder.com/250x150.png?text=Rutina+Intermedia" alt="Rutina Intermedia">
-<h3>Rutina Intermedia</h3>
-<p>Nivel medio, 45 min</p>
-<a href="#" class="btn">Ver Rutina</a>
-</div>
-<div class="card">
-<img src="https://via.placeholder.com/250x150.png?text=Rutina+Avanzada" alt="Rutina Avanzada">
-<h3>Rutina Avanzada</h3>
-<p>Alta intensidad, 60 min</p>
-<a href="#" class="btn">Ver Rutina</a>
-</div>
-<div class="card">
-<img src="https://via.placeholder.com/250x150.png?text=Rutina+Extrema" alt="Rutina Extrema">
-<h3>Rutina Extrema</h3>
-<p>Expertos, 90 min</p>
-<a href="#" class="btn">Ver Rutina</a>
-</div>
+<div id="routineList"></div>
 </section>
 
 <!-- EJERCICIOS -->
@@ -90,7 +71,7 @@ footer {background:#222;color:white;text-align:center;padding:15px 0;margin-top:
 <h2>Crea tu Rutina Personal</h2>
 <form id="createRoutineForm">
 <input type="text" placeholder="Nombre de tu rutina" required>
-<textarea placeholder="Descripción y ejercicios" rows="4" required></textarea>
+<textarea placeholder="Descripción y ejercicios separados por comas" rows="4" required></textarea>
 <button type="submit" class="submitBtn">Crear Rutina</button>
 </form>
 <p>Puedes crear hasta 3 rutinas gratis. Más requieren Premium.</p>
@@ -110,7 +91,7 @@ footer {background:#222;color:white;text-align:center;padding:15px 0;margin-top:
 <section id="profile" class="section">
 <h2>Perfil de Usuario</h2>
 <p>Nombre: Usuario Demo</p>
-<p>Rutinas creadas: 2</p>
+<p>Rutinas creadas: <span id="userRoutines">0</span></p>
 <p>Rutinas favoritas: Rutina Básica, Rutina Avanzada</p>
 <p>Progreso: 25%</p>
 </section>
@@ -129,6 +110,15 @@ footer {background:#222;color:white;text-align:center;padding:15px 0;margin-top:
 <p>Teléfono: <a href="tel:+34633314139">633314139</a></p>
 </section>
 
+<!-- MODAL RUTINA -->
+<div id="routineModal" class="modal">
+<div class="modal-content">
+<span class="close" onclick="closeModal()">&times;</span>
+<h3 id="modalTitle"></h3>
+<div id="modalExercises"></div>
+</div>
+</div>
+
 <footer>
 <p>&copy; 2025 GymMaster. Todos los derechos reservados</p>
 </footer>
@@ -140,12 +130,16 @@ function showSection(sectionId){
   document.getElementById(sectionId).classList.add('active');
 }
 
-// Ejercicios simulados
+// Lista de ejercicios
 const exercises = [
   {name:'Flexiones', img:'https://via.placeholder.com/250x150.png?text=Flexiones', type:'Gratis'},
   {name:'Sentadillas', img:'https://via.placeholder.com/250x150.png?text=Sentadillas', type:'Gratis'},
   {name:'Plancha Avanzada', img:'https://via.placeholder.com/250x150.png?text=Plancha+Avanzada', type:'Premium'},
-  {name:'Burpees Extremos', img:'https://via.placeholder.com/250x150.png?text=Burpees+Extremos', type:'Premium'}
+  {name:'Burpees Extremos', img:'https://via.placeholder.com/250x150.png?text=Burpees+Extremos', type:'Premium'},
+  {name:'Peso Muerto', img:'https://via.placeholder.com/250x150.png?text=Peso+Muerto', type:'Gratis'},
+  {name:'Press Banca', img:'https://via.placeholder.com/250x150.png?text=Press+Banca', type:'Premium'},
+  {name:'Curl Bíceps', img:'https://via.placeholder.com/250x150.png?text=Curl+Biceps', type:'Gratis'},
+  {name:'Elevaciones Laterales', img:'https://via.placeholder.com/250x150.png?text=Elevaciones+Laterales', type:'Premium'}
 ];
 
 const exerciseList = document.getElementById('exerciseList');
@@ -156,6 +150,44 @@ exercises.forEach(ex=>{
   exerciseList.appendChild(card);
 });
 
+// Rutinas prediseñadas
+const routines = [
+  {name:'Rutina Básica', exercises:['Flexiones','Sentadillas','Curl Bíceps'], level:'Principiante', time:'20 min'},
+  {name:'Rutina Intermedia', exercises:['Flexiones','Plancha Avanzada','Peso Muerto'], level:'Intermedio', time:'45 min'},
+  {name:'Rutina Avanzada', exercises:['Press Banca','Burpees Extremos','Elevaciones Laterales'], level:'Avanzado', time:'60 min'},
+  {name:'Rutina Extrema', exercises:['Burpees Extremos','Plancha Avanzada','Press Banca'], level:'Experto', time:'90 min'}
+];
+
+const routineList = document.getElementById('routineList');
+routines.forEach((r,index)=>{
+  let card=document.createElement('div');
+  card.className='card';
+  card.innerHTML=`<h3>${r.name}</h3><p>${r.level} - ${r.time}</p><button class="btn" onclick="openRoutine(${index})">Ver Rutina</button>`;
+  routineList.appendChild(card);
+});
+
+// Modal rutina
+function openRoutine(index){
+  const r=routines[index];
+  document.getElementById('modalTitle').innerText=r.name;
+  const modalExercises=document.getElementById('modalExercises');
+  modalExercises.innerHTML='';
+  r.exercises.forEach(e=>{
+    const ex=exercises.find(ex=>ex.name===e);
+    if(ex){
+      const div=document.createElement('div');
+      div.className='card';
+      div.innerHTML=`<img src="${ex.img}" alt="${ex.name}"><h3>${ex.name}</h3><p>${ex.type}</p>`;
+      modalExercises.appendChild(div);
+    }
+  });
+  document.getElementById('routineModal').style.display='block';
+}
+
+function closeModal(){
+  document.getElementById('routineModal').style.display='none';
+}
+
 // Seguimiento calorías
 document.getElementById('trackingForm').addEventListener('submit',function(e){
   e.preventDefault();
@@ -165,8 +197,15 @@ document.getElementById('trackingForm').addEventListener('submit',function(e){
 });
 
 // Crear Rutina (simulación)
+let userRoutines=0;
 document.getElementById('createRoutineForm').addEventListener('submit',function(e){
   e.preventDefault();
+  if(userRoutines>=3){
+    alert('Límite alcanzado. Suscríbete a Premium para crear más rutinas.');
+    return;
+  }
+  userRoutines++;
+  document.getElementById('userRoutines').innerText=userRoutines;
   alert('Rutina creada! (simulación)');
 });
 </script>
