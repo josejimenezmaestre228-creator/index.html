@@ -6,47 +6,53 @@
 <title>GymMaster - Tu App de Gimnasio</title>
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
-body {margin:0; padding:0; font-family:'Roboto',sans-serif; background:#f4f4f4;}
-header {background:#ff6f61; color:white; padding:20px; text-align:center;}
+body {margin:0; padding:0; font-family:'Roboto', sans-serif; background:#f4f4f4;}
+header {background:#ff6f61; color:white; text-align:center; padding:20px;}
 header h1 {margin:0; font-size:2em;}
-header p {margin:5px 0 0 0; font-size:1em;}
-nav {display:flex; justify-content:space-around; background:#333; flex-wrap:wrap;}
-nav a {color:white; padding:12px; text-decoration:none; font-weight:bold;}
-nav a:hover {background:#575757; transition:0.3s;}
-section {padding:20px; max-width:1200px; margin:auto;}
+nav {display:flex; justify-content:space-around; background:#333; flex-wrap:wrap; position:sticky; top:0; z-index:100;}
+nav button {color:white; background:none; border:none; padding:12px; font-weight:bold; cursor:pointer;}
+nav button:hover {background:#575757; border-radius:8px;}
+.section {display:none; padding:20px; max-width:600px; margin:auto;}
+.section.active {display:block;}
 .card {background:white; border-radius:15px; box-shadow:0 5px 15px rgba(0,0,0,0.1); padding:15px; margin-bottom:20px; transition:transform 0.3s;}
 .card:hover {transform:translateY(-5px);}
 .card img {width:100%; border-radius:15px;}
-.card h3 {margin:10px 0 5px 0;}
+.card h3 {margin:10px 0 5px;}
 .card p {color:#555; line-height:1.4;}
-.btn {display:inline-block; padding:10px 20px; background:#ff6f61; color:white; text-decoration:none; border-radius:10px; font-weight:bold; margin-top:10px;}
+.btn {display:inline-block; padding:10px 20px; background:#ff6f61; color:white; text-decoration:none; border-radius:10px; font-weight:bold; margin-top:10px; text-align:center;}
 .btn:hover {background:#ff856d; cursor:pointer;}
-#tracking input, #createRoutine input, #createRoutine textarea {width:100%; padding:10px; margin:5px 0 10px 0; border-radius:5px; border:1px solid #ccc;}
-#tracking button, #createRoutine button {padding:10px 20px; border:none; border-radius:10px; font-weight:bold; background:#ff6f61; color:white; cursor:pointer;}
-#tracking button:hover, #createRoutine button:hover {background:#ff856d;}
-footer {background:#222; color:white; text-align:center; padding:15px 0;}
-@media(max-width:768px){header h1{font-size:1.5em;}}
+input, textarea {width:100%; padding:10px; margin:5px 0 10px 0; border-radius:5px; border:1px solid #ccc;}
+button.submitBtn {padding:10px 20px; border:none; border-radius:10px; font-weight:bold; background:#ff6f61; color:white; cursor:pointer;}
+button.submitBtn:hover {background:#ff856d;}
+footer {background:#222; color:white; text-align:center; padding:15px 0; margin-top:20px;}
 </style>
 </head>
 <body>
 
 <header>
 <h1>GymMaster</h1>
-<p>Tu app de gimnasio completa, crea rutinas, sigue tu progreso y mejora cada día</p>
+<p>Tu app de gimnasio completa, crea rutinas y sigue tu progreso</p>
 </header>
 
 <nav>
-<a href="#rutinas">Rutinas</a>
-<a href="#exercises">Ejercicios</a>
-<a href="#createRoutine">Crear Rutina</a>
-<a href="#tracking">Seguimiento</a>
-<a href="#profile">Perfil</a>
-<a href="#premium">Premium</a>
-<a href="#contacto">Contacto</a>
+<button onclick="showSection('home')">Inicio</button>
+<button onclick="showSection('rutinas')">Rutinas</button>
+<button onclick="showSection('exercises')">Ejercicios</button>
+<button onclick="showSection('createRoutine')">Crear Rutina</button>
+<button onclick="showSection('tracking')">Seguimiento</button>
+<button onclick="showSection('profile')">Perfil</button>
+<button onclick="showSection('premium')">Premium</button>
+<button onclick="showSection('contact')">Contacto</button>
 </nav>
 
-<!-- SECCIÓN RUTINAS -->
-<section id="rutinas">
+<!-- HOME -->
+<section id="home" class="section active">
+<h2>Bienvenido a GymMaster</h2>
+<p>Explora rutinas, ejercicios y crea tu plan de entrenamiento personalizado.</p>
+</section>
+
+<!-- RUTINAS -->
+<section id="rutinas" class="section">
 <h2>Rutinas Destacadas</h2>
 <div class="card">
 <img src="rutina_basica.png" alt="Rutina Básica">
@@ -74,62 +80,35 @@ footer {background:#222; color:white; text-align:center; padding:15px 0;}
 </div>
 </section>
 
-<!-- SECCIÓN EJERCICIOS -->
-<section id="exercises">
+<!-- EJERCICIOS -->
+<section id="exercises" class="section">
 <h2>Todos los Ejercicios</h2>
-<div class="card">
-<img src="ejercicio1.png" alt="Flexiones">
-<h3>Flexiones</h3>
-<p>Gratis - Pecho y brazos</p>
-</div>
-<div class="card">
-<img src="ejercicio2.png" alt="Sentadillas">
-<h3>Sentadillas</h3>
-<p>Gratis - Piernas y glúteos</p>
-</div>
-<div class="card">
-<img src="ejercicio3.png" alt="Plancha Avanzada">
-<h3>Plancha Avanzada</h3>
-<p>Premium - Core y abdominales</p>
-</div>
-<div class="card">
-<img src="ejercicio4.png" alt="Burpees Extremos">
-<h3>Burpees Extremos</h3>
-<p>Premium - Full body intenso</p>
-</div>
+<div id="exerciseList"></div>
 </section>
 
 <!-- CREAR RUTINA -->
-<section id="createRoutine">
+<section id="createRoutine" class="section">
 <h2>Crea tu Rutina Personal</h2>
-<form>
+<form id="createRoutineForm">
 <input type="text" placeholder="Nombre de tu rutina" required>
 <textarea placeholder="Descripción y ejercicios" rows="4" required></textarea>
-<button type="submit">Crear Rutina</button>
+<button type="submit" class="submitBtn">Crear Rutina</button>
 </form>
 <p>Puedes crear hasta 3 rutinas gratis, para más necesitas Premium.</p>
 </section>
 
 <!-- SEGUIMIENTO -->
-<section id="tracking">
+<section id="tracking" class="section">
 <h2>Seguimiento de Progreso</h2>
-<form>
+<form id="trackingForm">
 <input type="number" placeholder="Minutos de entrenamiento" required>
-<button type="submit">Calcular Calorías</button>
+<button type="submit" class="submitBtn">Calcular Calorías</button>
 </form>
 <p id="caloriesResult">Calorías quemadas: 0</p>
-<script>
-document.querySelector('#tracking form').addEventListener('submit', function(e){
-e.preventDefault();
-let minutes = parseInt(this.querySelector('input').value);
-let burned = minutes*8;
-document.getElementById('caloriesResult').innerText='Calorías quemadas: '+burned;
-});
-</script>
 </section>
 
 <!-- PERFIL -->
-<section id="profile">
+<section id="profile" class="section">
 <h2>Perfil de Usuario</h2>
 <p>Nombre: Usuario Demo</p>
 <p>Rutinas creadas: 2</p>
@@ -138,14 +117,14 @@ document.getElementById('caloriesResult').innerText='Calorías quemadas: '+burne
 </section>
 
 <!-- PLAN PREMIUM -->
-<section id="premium">
+<section id="premium" class="section">
 <h2>Plan Premium</h2>
 <p>Accede a rutinas avanzadas, ejercicios premium, creación ilimitada de rutinas y seguimiento completo.</p>
 <a href="https://www.paypal.com/paypalme/josejimenezmaestre228" class="btn">Suscribirse 50€/año</a>
 </section>
 
 <!-- CONTACTO -->
-<section id="contacto">
+<section id="contact" class="section">
 <h2>Contacto</h2>
 <p>Email: <a href="mailto:gymmaster@gmail.com">gymmaster@gmail.com</a></p>
 <p>Teléfono: <a href="tel:+34633314139">633314139</a></p>
@@ -154,6 +133,44 @@ document.getElementById('caloriesResult').innerText='Calorías quemadas: '+burne
 <footer>
 <p>&copy; 2025 GymMaster. Todos los derechos reservados</p>
 </footer>
+
+<script>
+// Función para mostrar secciones tipo app
+function showSection(sectionId){
+  document.querySelectorAll('.section').forEach(sec => sec.classList.remove('active'));
+  document.getElementById(sectionId).classList.add('active');
+}
+
+// Ejercicios simulados
+const exercises = [
+  {name:'Flexiones', img:'ejercicio1.png', type:'Gratis'},
+  {name:'Sentadillas', img:'ejercicio2.png', type:'Gratis'},
+  {name:'Plancha Avanzada', img:'ejercicio3.png', type:'Premium'},
+  {name:'Burpees Extremos', img:'ejercicio4.png', type:'Premium'}
+];
+
+const exerciseList = document.getElementById('exerciseList');
+exercises.forEach(ex => {
+  let card = document.createElement('div');
+  card.className = 'card';
+  card.innerHTML = `<img src="${ex.img}" alt="${ex.name}"><h3>${ex.name}</h3><p>${ex.type}</p>`;
+  exerciseList.appendChild(card);
+});
+
+// Seguimiento calorías
+document.getElementById('trackingForm').addEventListener('submit', function(e){
+  e.preventDefault();
+  let minutes = parseInt(this.querySelector('input').value);
+  let burned = minutes*8; // Simulación
+  document.getElementById('caloriesResult').innerText='Calorías quemadas: '+burned;
+});
+
+// Crear Rutina (simulación)
+document.getElementById('createRoutineForm').addEventListener('submit', function(e){
+  e.preventDefault();
+  alert('Rutina creada! (simulación)');
+});
+</script>
 
 </body>
 </html>
