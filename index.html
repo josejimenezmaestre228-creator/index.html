@@ -1,166 +1,179 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GymMaster - Tu App de Gimnasio</title>
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
-        body {margin:0; padding:0; font-family: 'Roboto', sans-serif; background:#f4f4f4;}
-        header {background:#ff6f61; color:white; padding:20px; text-align:center;}
-        h1 {margin:0; font-size:2em;}
-        nav {display:flex; justify-content:space-around; background:#333;}
-        nav button {padding:14px 20px; color:white; background:none; border:none; font-weight:bold; cursor:pointer;}
-        nav button:hover {background:#575757;}
-        .screen {display:none; padding:20px;}
-        .active {display:block;}
-        .exercise, .routine {background:white; padding:15px; border-radius:10px; margin-bottom:15px; box-shadow:0 3px 8px rgba(0,0,0,0.1);}
-        .exercise img, .routine img {width:100%; max-width:200px; display:block; margin-bottom:10px; border-radius:8px;}
-        .premium {color:red; font-weight:bold;}
-        .btn {display:inline-block; padding:8px 15px; background:#ff6f61; color:white; border-radius:8px; text-decoration:none; cursor:pointer;}
-        .btn:hover {background:#ff856d;}
-        .plan {background:#fff0f0; padding:15px; border-radius:10px; margin-bottom:15px;}
-        input[type="text"], select {padding:8px; width:100%; margin-bottom:10px; border-radius:5px; border:1px solid #ccc;}
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GymMaster - Tu App de Fitness</title>
+<style>
+/* Fuentes y reset */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+* {margin:0; padding:0; box-sizing:border-box;}
+body {font-family: 'Roboto', sans-serif; background:#f5f5f5; color:#333;}
+
+/* Header */
+header {background:#ff6f61; color:white; text-align:center; padding:20px;}
+header h1 {margin-bottom:5px;}
+nav {display:flex; justify-content:center; background:#333;}
+nav a {color:white; padding:14px 20px; text-decoration:none; font-weight:bold; flex:1; text-align:center;}
+nav a:hover {background:#575757; transition:0.3s;}
+
+/* Contenedores */
+.container {padding:20px; max-width:1200px; margin:auto;}
+.section {margin-bottom:40px;}
+
+/* Botones */
+.btn {display:inline-block; padding:10px 20px; background:#ff6f61; color:white; border-radius:10px; text-decoration:none; font-weight:bold; transition:0.3s;}
+.btn:hover {background:#ff856d;}
+
+/* Products / Exercises */
+.grid {display:grid; grid-template-columns:repeat(auto-fit,minmax(250px,1fr)); gap:20px;}
+.card {background:white; border-radius:15px; padding:15px; box-shadow:0 5px 20px rgba(0,0,0,0.1); transition:0.3s;}
+.card:hover {transform:translateY(-5px);}
+.card img {width:100%; border-radius:10px;}
+.card h3 {margin:10px 0; font-size:1.2em;}
+.card p {color:#555; line-height:1.4;}
+
+/* Perfil y seguimiento */
+.profile {background:white; padding:20px; border-radius:15px; box-shadow:0 5px 15px rgba(0,0,0,0.1);}
+.profile h2 {margin-bottom:15px;}
+.stats {display:flex; justify-content:space-around; margin-top:15px;}
+.stats div {text-align:center;}
+.stats div span {display:block; font-weight:bold; font-size:1.2em;}
+
+/* Modal plan premium */
+.modal {display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.7); justify-content:center; align-items:center;}
+.modal-content {background:white; padding:30px; border-radius:15px; max-width:400px; text-align:center;}
+.modal-content h2 {margin-bottom:15px;}
+.close {position:absolute; top:10px; right:15px; font-size:25px; cursor:pointer;}
+
+/* Footer */
+footer {text-align:center; padding:20px; background:#222; color:white;}
+</style>
 </head>
 <body>
 
 <header>
-    <h1>GymMaster</h1>
-    <p>Tu App de Gimnasio Completa</p>
+<h1>GymMaster</h1>
+<p>Tu App de Fitness Completa</p>
 </header>
 
 <nav>
-    <button onclick="showScreen('home')">Inicio</button>
-    <button onclick="showScreen('exercises')">Ejercicios</button>
-    <button onclick="showScreen('routines')">Rutinas</button>
-    <button onclick="showScreen('createRoutine')">Crear Rutina</button>
-    <button onclick="showScreen('profile')">Perfil</button>
-    <button onclick="showScreen('premium')">Premium</button>
+<a href="#dashboard">Inicio</a>
+<a href="#exercises">Ejercicios</a>
+<a href="#routines">Rutinas</a>
+<a href="#create">Crear Rutina</a>
+<a href="#premium">Premium</a>
+<a href="#profile">Perfil</a>
 </nav>
 
-<!-- Inicio -->
-<div id="home" class="screen active">
-    <h2>Bienvenido a GymMaster</h2>
-    <p>Explora ejercicios, crea rutinas y sigue tu progreso.</p>
+<div class="container" id="dashboard" class="section">
+<h2>Bienvenido a GymMaster</h2>
+<p>Explora ejercicios, crea tus rutinas y alcanza tus objetivos.</p>
 </div>
 
-<!-- Ejercicios -->
-<div id="exercises" class="screen">
-    <h2>Ejercicios</h2>
-    <div id="exerciseList"></div>
+<div class="container" id="exercises" class="section">
+<h2>Ejercicios Disponibles</h2>
+<div class="grid">
+<!-- Ejemplo de ejercicios, se deben reemplazar con imágenes reales de muñecos -->
+<div class="card">
+<img src="https://via.placeholder.com/250x200.png?text=Flexiones" alt="Flexiones">
+<h3>Flexiones</h3>
+<p>Ejercicio de pecho y brazos. Series: 3, Reps: 12-15</p>
+</div>
+<div class="card">
+<img src="https://via.placeholder.com/250x200.png?text=Sentadillas" alt="Sentadillas">
+<h3>Sentadillas</h3>
+<p>Ejercicio de piernas y glúteos. Series: 3, Reps: 15-20</p>
+</div>
+<div class="card">
+<img src="https://via.placeholder.com/250x200.png?text=Plancha" alt="Plancha">
+<h3>Plancha</h3>
+<p>Ejercicio de core. Mantener 60 segundos por serie.</p>
+</div>
+<!-- Repetir para todos los ejercicios que se deseen -->
+</div>
 </div>
 
-<!-- Rutinas -->
-<div id="routines" class="screen">
-    <h2>Rutinas Prediseñadas</h2>
-    <div id="routineList"></div>
+<div class="container" id="routines" class="section">
+<h2>Rutinas Prediseñadas</h2>
+<div class="grid">
+<div class="card">
+<h3>Rutina Full Body</h3>
+<p>Duración: 45 min</p>
+<p>Ejercicios: Flexiones, Sentadillas, Plancha...</p>
+<a class="btn" href="#">Ver Rutina</a>
+</div>
+<div class="card">
+<h3>Rutina Piernas y Glúteos</h3>
+<p>Duración: 40 min</p>
+<p>Ejercicios: Sentadillas, Zancadas, Elevaciones de talón...</p>
+<a class="btn" href="#">Ver Rutina</a>
+</div>
+<!-- Añadir más rutinas reales -->
+</div>
 </div>
 
-<!-- Crear Rutina -->
-<div id="createRoutine" class="screen">
-    <h2>Crear tu Rutina</h2>
-    <input type="text" id="newRoutineName" placeholder="Nombre de la rutina">
-    <select id="addExerciseSelect"></select>
-    <button class="btn" onclick="addExerciseToRoutine()">Añadir ejercicio</button>
-    <div id="customRoutineList"></div>
-    <button class="btn" onclick="saveRoutine()">Guardar Rutina</button>
+<div class="container" id="create" class="section">
+<h2>Crear Rutina Personalizada</h2>
+<p>Puedes crear hasta 3 rutinas gratuitas. Para más, suscríbete al plan Premium.</p>
+<a class="btn" href="#premium">Suscribirse Premium</a>
 </div>
 
-<!-- Perfil -->
-<div id="profile" class="screen">
-    <h2>Perfil de Usuario</h2>
-    <p>Usuario: Demo</p>
-    <p>Rutinas creadas: <span id="routineCount">0</span></p>
-    <p>Calorías quemadas aproximadas: <span id="caloriesBurned">0</span> kcal</p>
+<div class="container" id="premium" class="section">
+<h2>Plan Premium</h2>
+<p>Accede a rutinas ilimitadas y ejercicios avanzados.</p>
+<p>Opciones de pago:</p>
+<ul>
+<li>5 € al mes</li>
+<li>50 € al año</li>
+</ul>
+<a class="btn" onclick="openModal()">Suscribirse</a>
 </div>
 
-<!-- Premium -->
-<div id="premium" class="screen">
-    <h2>Plan Premium</h2>
-    <div class="plan">
-        <p>Desbloquea:</p>
-        <ul>
-            <li>Más de 50 ejercicios Premium</li>
-            <li>Rutinas ilimitadas</li>
-            <li>Seguimiento avanzado de calorías y progreso</li>
-        </ul>
-        <a href="https://www.paypal.com/paypalme/josejimenezmaestre228/50" target="_blank" class="btn">Suscribirse 50€/año</a>
-    </div>
+<div class="container" id="profile" class="section">
+<h2>Perfil de Usuario</h2>
+<div class="profile">
+<p>Nombre: Usuario</p>
+<p>Email: usuario@ejemplo.com</p>
+<div class="stats">
+<div>
+<span>0</span>
+Calorías
 </div>
+<div>
+<span>0</span>
+Pulsaciones
+</div>
+<div>
+<span>0</span>
+Progreso %
+</div>
+</div>
+</div>
+</div>
+
+<!-- Modal Premium -->
+<div id="modal" class="modal">
+<div class="modal-content">
+<span class="close" onclick="closeModal()">&times;</span>
+<h2>Suscribirse a Premium</h2>
+<p>Pago seguro mediante PayPal</p>
+<a class="btn" href="https://www.paypal.com/paypalme/josejimenezmaestre228" target="_blank">Pagar ahora</a>
+</div>
+</div>
+
+<footer>
+<p>&copy; 2025 GymMaster. Todos los derechos reservados.</p>
+</footer>
 
 <script>
-    function showScreen(screenId){
-        document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));
-        document.getElementById(screenId).classList.add('active');
-    }
-
-    // Lista de ejercicios de ejemplo
-    const exercises = [
-        {name:"Flexiones", group:"Pecho", premium:false, img:"https://via.placeholder.com/200x150?text=Flexiones"},
-        {name:"Sentadillas", group:"Piernas", premium:false, img:"https://via.placeholder.com/200x150?text=Sentadillas"},
-        {name:"Press de Banca", group:"Pecho", premium:true, img:"https://via.placeholder.com/200x150?text=Press+Banca"},
-        {name:"Curl Bíceps", group:"Brazos", premium:true, img:"https://via.placeholder.com/200x150?text=Curl+Biceps"},
-        {name:"Plancha", group:"Core", premium:false, img:"https://via.placeholder.com/200x150?text=Plancha"},
-    ];
-
-    // Mostrar ejercicios
-    const exerciseList = document.getElementById('exerciseList');
-    const addExerciseSelect = document.getElementById('addExerciseSelect');
-    exercises.forEach(ex => {
-        const div = document.createElement('div');
-        div.className="exercise";
-        div.innerHTML=`<img src="${ex.img}" alt="${ex.name}"><h3>${ex.name} ${ex.premium?'<span class="premium">Premium</span>':''}</h3><p>Grupo muscular: ${ex.group}</p>`;
-        exerciseList.appendChild(div);
-
-        const opt = document.createElement('option');
-        opt.value=ex.name;
-        opt.text=ex.name;
-        addExerciseSelect.appendChild(opt);
-    });
-
-    // Rutinas prediseñadas
-    const routines = [
-        {name:"Principiante", exercises:["Flexiones","Sentadillas","Plancha"]},
-        {name:"Intermedio", exercises:["Press de Banca","Sentadillas","Curl Bíceps"]},
-    ];
-
-    const routineList = document.getElementById('routineList');
-    routines.forEach(r=>{
-        const div = document.createElement('div');
-        div.className="routine";
-        div.innerHTML=`<h3>${r.name}</h3><ul>${r.exercises.map(e=>"<li>"+e+"</li>").join('')}</ul>`;
-        routineList.appendChild(div);
-    });
-
-    // Crear rutina personalizada
-    let customRoutine = [];
-    function addExerciseToRoutine(){
-        const exName = addExerciseSelect.value;
-        customRoutine.push(exName);
-        renderCustomRoutine();
-    }
-
-    function renderCustomRoutine(){
-        const div = document.getElementById('customRoutineList');
-        div.innerHTML="<h4>Tu Rutina:</h4><ul>"+customRoutine.map(e=>"<li>"+e+"</li>").join('')+"</ul>";
-    }
-
-    function saveRoutine(){
-        if(customRoutine.length===0){alert("Añade ejercicios primero."); return;}
-        routines.push({name: document.getElementById('newRoutineName').value || "Rutina Nueva", exercises: customRoutine});
-        alert("Rutina guardada!");
-        customRoutine=[];
-        renderCustomRoutine();
-        document.getElementById('routineCount').innerText=routines.length;
-        routineList.innerHTML="";
-        routines.forEach(r=>{
-            const div = document.createElement('div');
-            div.className="routine";
-            div.innerHTML=`<h3>${r.name}</h3><ul>${r.exercises.map(e=>"<li>"+e+"</li>").join('')}</ul>`;
-            routineList.appendChild(div);
-        });
-    }
+// Modal funciones
+function openModal() {
+document.getElementById("modal").style.display="flex";
+}
+function closeModal() {
+document.getElementById("modal").style.display="none";
+}
 </script>
 
 </body>
