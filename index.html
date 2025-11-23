@@ -5,86 +5,87 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>GymMaster - Tu App de Gimnasio</title>
 <style>
-    @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
-    * {margin:0; padding:0; box-sizing:border-box;}
-    body {font-family:'Roboto', sans-serif; background:#f4f4f4; color:#333;}
-    header {background:#ff6f61; color:#fff; text-align:center; padding:20px;}
-    header h1 {font-size:1.8em; margin-bottom:5px;}
-    header p {font-size:1em;}
-    nav {display:flex; justify-content:center; background:#333;}
-    nav a {color:#fff; text-decoration:none; padding:10px 15px; font-weight:bold;}
-    nav a:hover {background:#575757;}
-    .container {padding:15px; max-width:100%; margin:auto;}
-    .products {display:grid; grid-template-columns:1fr; gap:15px;}
-    @media(min-width:600px){.products{grid-template-columns:1fr 1fr;}}
-    .product {background:#fff; border-radius:12px; box-shadow:0 4px 10px rgba(0,0,0,0.1); padding:15px;}
-    .product img {width:100%; border-radius:12px; height:auto;}
-    .product h3 {margin:10px 0; font-size:1.2em;}
-    .product p {margin:5px 0; line-height:1.4;}
-    .btn {display:inline-block; margin-top:10px; padding:8px 15px; background:#ff6f61; color:#fff; text-decoration:none; border-radius:8px; font-weight:bold;}
-    .btn:hover {background:#ff856d;}
-    .contact {background:#333; color:#fff; padding:20px; text-align:center;}
-    .contact a {color:#ff6f61; text-decoration:none;}
-    footer {background:#222; color:#fff; text-align:center; padding:15px;}
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+body {font-family:'Roboto', sans-serif; margin:0; padding:0; background:#f4f4f4;}
+header {background:#ff6f61; color:white; text-align:center; padding:30px 0;}
+header h1 {margin:0; font-size:2.5em;}
+header p {margin:5px 0 0 0; font-size:1.1em;}
+nav {background:#333; display:flex; justify-content:center;}
+nav a {color:white; padding:14px 20px; text-decoration:none; display:block; font-weight:bold;}
+nav a:hover {background:#575757; transition:0.3s;}
+.container {padding:40px 20px; max-width:1200px; margin:auto;}
+.products {display:grid; grid-template-columns:repeat(auto-fit, minmax(250px,1fr)); gap:30px;}
+.product {background:white; padding:20px; border-radius:15px; box-shadow:0 5px 20px rgba(0,0,0,0.1); transition:transform 0.3s;}
+.product:hover {transform:translateY(-5px);}
+.product img {max-width:100%; border-radius:15px; height:auto;}
+.product h3 {margin:15px 0 10px; font-size:1.3em; color:#333;}
+.product p {color:#555; line-height:1.4;}
+.btn {display:inline-block; margin-top:10px; padding:10px 20px; background:#ff6f61; color:white; text-decoration:none; border-radius:10px; font-weight:bold; transition:0.3s;}
+.btn:hover {background:#ff856d;}
+.contact {background:#333; color:white; padding:40px 20px; text-align:center;}
+.contact a {color:#ff6f61; text-decoration:none; font-weight:bold;}
+footer {background:#222; color:white; text-align:center; padding:20px 0;}
+@media(max-width:768px){header h1{font-size:2em;}}
+html, body {height:100%; width:100%; margin:0; padding:0;}
 </style>
 </head>
 <body>
 
 <header>
-    <h1>GymMaster</h1>
-    <p>Rutinas desde principiantes hasta profesionales</p>
+<h1>GymMaster</h1>
+<p>Rutinas desde principiantes hasta profesionales</p>
 </header>
 
 <nav>
-    <a href="#productos">Ejercicios</a>
-    <a href="#premium">Premium</a>
-    <a href="#contacto">Contacto</a>
+<a href="#productos">Ejercicios</a>
+<a href="#premium">Premium</a>
+<a href="#contacto">Contacto</a>
 </nav>
 
 <div class="container" id="productos">
-    <h2>Rutinas Destacadas</h2>
-    <div class="products">
-        <div class="product">
-            <img src="rutina_basica.png" alt="Rutina Básica">
-            <h3>Rutina Básica</h3>
-            <p>Perfecta para principiantes, duración 20 min.</p>
-            <a href="#" class="btn">Ver Detalles</a>
-        </div>
-        <div class="product">
-            <img src="rutina_intermedia.png" alt="Rutina Intermedia">
-            <h3>Rutina Intermedia</h3>
-            <p>Ejercicios para nivel medio, duración 45 min.</p>
-            <a href="#" class="btn">Ver Detalles</a>
-        </div>
-        <div class="product">
-            <img src="rutina_avanzada.png" alt="Rutina Avanzada">
-            <h3>Rutina Avanzada</h3>
-            <p>Alta intensidad, duración 60 min.</p>
-            <a href="#" class="btn">Ver Detalles</a>
-        </div>
-        <div class="product">
-            <img src="rutina_extrema.png" alt="Rutina Extrema">
-            <h3>Rutina Extrema</h3>
-            <p>Ejercicios para expertos, duración 90 min.</p>
-            <a href="#" class="btn">Ver Detalles</a>
-        </div>
+<h2 style="text-align:center; margin-bottom:30px;">Rutinas Destacadas</h2>
+<div class="products">
+    <div class="product">
+        <img src="rutina_basica.png" alt="Rutina Básica">
+        <h3>Rutina Básica</h3>
+        <p>Perfecta para principiantes, duración 20 min.</p>
+        <a href="#" class="btn">Ver Detalles</a>
     </div>
+    <div class="product">
+        <img src="rutina_intermedia.png" alt="Rutina Intermedia">
+        <h3>Rutina Intermedia</h3>
+        <p>Ejercicios para nivel medio, duración 45 min.</p>
+        <a href="#" class="btn">Ver Detalles</a>
+    </div>
+    <div class="product">
+        <img src="rutina_avanzada.png" alt="Rutina Avanzada">
+        <h3>Rutina Avanzada</h3>
+        <p>Alta intensidad, duración 60 min.</p>
+        <a href="#" class="btn">Ver Detalles</a>
+    </div>
+    <div class="product">
+        <img src="rutina_extrema.png" alt="Rutina Extrema">
+        <h3>Rutina Extrema</h3>
+        <p>Ejercicios para expertos, duración 90 min.</p>
+        <a href="#" class="btn">Ver Detalles</a>
+    </div>
+</div>
 </div>
 
 <div class="container" id="premium">
-    <h2>Plan Premium</h2>
-    <p>Accede a todas las rutinas avanzadas, seguimiento de calorías y creación de tus propias rutinas.</p>
-    <a href="#" class="btn">Suscribirse 50€/año</a>
+<h2>Plan Premium</h2>
+<p>Accede a todas las rutinas avanzadas, seguimiento de calorías y creación de tus propias rutinas.</p>
+<a href="#" class="btn">Suscribirse 50€/año</a>
 </div>
 
 <div class="contact" id="contacto">
-    <h2>Contacto</h2>
-    <p>Email: <a href="mailto:gymmaster@gmail.com">gymmaster@gmail.com</a></p>
-    <p>Teléfono: <a href="tel:+34633314139">633314139</a></p>
+<h2>Contacto</h2>
+<p>Email: <a href="mailto:gymmaster@gmail.com">gymmaster@gmail.com</a></p>
+<p>Teléfono: <a href="tel:+34633314139">633314139</a></p>
 </div>
 
 <footer>
-    <p>&copy; 2025 GymMaster. Todos los derechos reservados.</p>
+<p>&copy; 2025 GymMaster. Todos los derechos reservados.</p>
 </footer>
 
 </body>
