@@ -1,142 +1,166 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>GymMaster</title>
-<style>
-    body {margin:0; font-family: Arial,sans-serif; background:#f4f4f4;}
-    header {background:linear-gradient(90deg,#ff6f61,#ff856d); color:white; padding:20px; text-align:center;}
-    header h1 {margin:0;}
-    nav {display:flex; justify-content:space-around; background:#333; color:white; padding:10px 0;}
-    nav button {background:none; border:none; color:white; font-weight:bold; cursor:pointer; font-size:1em;}
-    nav button.active {border-bottom:2px solid #ff6f61;}
-    section {display:none; padding:15px;}
-    section.active {display:block;}
-    .card {background:white; margin:10px 0; padding:15px; border-radius:10px; box-shadow:0 0 10px rgba(0,0,0,0.1);}
-    .card img {width:100%; max-width:200px; border-radius:10px;}
-    .button {padding:10px 20px; background:#ff6f61; color:white; border:none; border-radius:10px; cursor:pointer; font-weight:bold;}
-    .button:hover {background:#ff856d;}
-    input, select {padding:8px; margin:5px 0; width:100%;}
-    .premium {background:#fffbe6; padding:15px; margin:10px 0; border-radius:10px; text-align:center;}
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GymMaster - Tu App de Gimnasio</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+        body {margin:0; padding:0; font-family: 'Roboto', sans-serif; background:#f4f4f4;}
+        header {background:#ff6f61; color:white; padding:20px; text-align:center;}
+        h1 {margin:0; font-size:2em;}
+        nav {display:flex; justify-content:space-around; background:#333;}
+        nav button {padding:14px 20px; color:white; background:none; border:none; font-weight:bold; cursor:pointer;}
+        nav button:hover {background:#575757;}
+        .screen {display:none; padding:20px;}
+        .active {display:block;}
+        .exercise, .routine {background:white; padding:15px; border-radius:10px; margin-bottom:15px; box-shadow:0 3px 8px rgba(0,0,0,0.1);}
+        .exercise img, .routine img {width:100%; max-width:200px; display:block; margin-bottom:10px; border-radius:8px;}
+        .premium {color:red; font-weight:bold;}
+        .btn {display:inline-block; padding:8px 15px; background:#ff6f61; color:white; border-radius:8px; text-decoration:none; cursor:pointer;}
+        .btn:hover {background:#ff856d;}
+        .plan {background:#fff0f0; padding:15px; border-radius:10px; margin-bottom:15px;}
+        input[type="text"], select {padding:8px; width:100%; margin-bottom:10px; border-radius:5px; border:1px solid #ccc;}
+    </style>
 </head>
 <body>
 
 <header>
     <h1>GymMaster</h1>
-    <p>Tu gimnasio digital, en casa o donde quieras</p>
+    <p>Tu App de Gimnasio Completa</p>
 </header>
 
 <nav>
-    <button class="tab active" onclick="openTab('home')">Inicio</button>
-    <button class="tab" onclick="openTab('rutinas')">Rutinas</button>
-    <button class="tab" onclick="openTab('crearRutina')">Crear Rutina</button>
-    <button class="tab" onclick="openTab('ejercicios')">Ejercicios</button>
-    <button class="tab" onclick="openTab('perfil')">Perfil</button>
-    <button class="tab" onclick="openTab('premium')">Premium</button>
+    <button onclick="showScreen('home')">Inicio</button>
+    <button onclick="showScreen('exercises')">Ejercicios</button>
+    <button onclick="showScreen('routines')">Rutinas</button>
+    <button onclick="showScreen('createRoutine')">Crear Rutina</button>
+    <button onclick="showScreen('profile')">Perfil</button>
+    <button onclick="showScreen('premium')">Premium</button>
 </nav>
 
-<section id="home" class="active">
+<!-- Inicio -->
+<div id="home" class="screen active">
     <h2>Bienvenido a GymMaster</h2>
-    <p>Selecciona una sección desde el menú para comenzar a entrenar.</p>
-</section>
+    <p>Explora ejercicios, crea rutinas y sigue tu progreso.</p>
+</div>
 
-<section id="rutinas">
+<!-- Ejercicios -->
+<div id="exercises" class="screen">
+    <h2>Ejercicios</h2>
+    <div id="exerciseList"></div>
+</div>
+
+<!-- Rutinas -->
+<div id="routines" class="screen">
     <h2>Rutinas Prediseñadas</h2>
-    <div class="card">
-        <h3>Principiante</h3>
-        <p>3 días por semana, nivel fácil.</p>
-        <button class="button" onclick="alert('Ver rutina Principiante')">Ver Rutina</button>
-    </div>
-    <div class="card">
-        <h3>Intermedio</h3>
-        <p>4 días por semana, nivel medio.</p>
-        <button class="button" onclick="alert('Ver rutina Intermedio')">Ver Rutina</button>
-    </div>
-    <div class="card">
-        <h3>Avanzado</h3>
-        <p>5 días por semana, nivel alto.</p>
-        <button class="button" onclick="alert('Ver rutina Avanzado')">Ver Rutina</button>
-    </div>
-</section>
+    <div id="routineList"></div>
+</div>
 
-<section id="crearRutina">
-    <h2>Crear Rutina Personalizada</h2>
-    <p>Gratis hasta 3 rutinas, ilimitadas con Premium.</p>
-    <input type="text" placeholder="Nombre de la rutina" id="nombreRutina">
-    <select id="nivelRutina">
-        <option value="Principiante">Principiante</option>
-        <option value="Intermedio">Intermedio</option>
-        <option value="Avanzado">Avanzado</option>
-    </select>
-    <button class="button" onclick="alert('Rutina creada (simulado)')">Crear Rutina</button>
-</section>
+<!-- Crear Rutina -->
+<div id="createRoutine" class="screen">
+    <h2>Crear tu Rutina</h2>
+    <input type="text" id="newRoutineName" placeholder="Nombre de la rutina">
+    <select id="addExerciseSelect"></select>
+    <button class="btn" onclick="addExerciseToRoutine()">Añadir ejercicio</button>
+    <div id="customRoutineList"></div>
+    <button class="btn" onclick="saveRoutine()">Guardar Rutina</button>
+</div>
 
-<section id="ejercicios">
-    <h2>Ejercicios Disponibles</h2>
-    <input type="text" id="buscarEjercicio" placeholder="Buscar ejercicio..." onkeyup="filtrarEjercicios()">
-    
-    <div class="card ejercicio" data-nombre="Flexiones">
-        <img src="https://via.placeholder.com/200x150.png?text=Flexiones" alt="Flexiones">
-        <h3>Flexiones</h3>
-        <p>Ejercicio de pecho y brazos. Gratis.</p>
-    </div>
-    <div class="card ejercicio" data-nombre="Sentadillas">
-        <img src="https://via.placeholder.com/200x150.png?text=Sentadillas" alt="Sentadillas">
-        <h3>Sentadillas</h3>
-        <p>Ejercicio de piernas. Gratis.</p>
-    </div>
-    <div class="card ejercicio" data-nombre="Press Banca">
-        <img src="https://via.placeholder.com/200x150.png?text=Press+Banca" alt="Press Banca">
-        <h3>Press Banca</h3>
-        <p>Ejercicio avanzado. Premium.</p>
-    </div>
-    <div class="card ejercicio" data-nombre="Dominadas">
-        <img src="https://via.placeholder.com/200x150.png?text=Dominadas" alt="Dominadas">
-        <h3>Dominadas</h3>
-        <p>Espalda y brazos. Premium.</p>
-    </div>
-    <!-- Puedes añadir más ejercicios aquí -->
-</section>
-
-<section id="perfil">
+<!-- Perfil -->
+<div id="profile" class="screen">
     <h2>Perfil de Usuario</h2>
-    <p>Nombre: Usuario</p>
-    <p>Rutinas creadas: 2</p>
-    <p>Calorías quemadas: 1200</p>
-    <p>Tiempo entrenado: 5h</p>
-    <p>Pulsaciones promedio: 120 bpm</p>
-</section>
+    <p>Usuario: Demo</p>
+    <p>Rutinas creadas: <span id="routineCount">0</span></p>
+    <p>Calorías quemadas aproximadas: <span id="caloriesBurned">0</span> kcal</p>
+</div>
 
-<section id="premium">
+<!-- Premium -->
+<div id="premium" class="screen">
     <h2>Plan Premium</h2>
-    <div class="premium">
-        <p>Desbloquea rutinas ilimitadas y ejercicios avanzados.</p>
-        <p>Precio: 50€/año</p>
-        <button class="button" onclick="window.location.href='https://www.paypal.com/paypalme/josejimenezmaestre228/50'">Suscribirse</button>
+    <div class="plan">
+        <p>Desbloquea:</p>
+        <ul>
+            <li>Más de 50 ejercicios Premium</li>
+            <li>Rutinas ilimitadas</li>
+            <li>Seguimiento avanzado de calorías y progreso</li>
+        </ul>
+        <a href="https://www.paypal.com/paypalme/josejimenezmaestre228/50" target="_blank" class="btn">Suscribirse 50€/año</a>
     </div>
-</section>
+</div>
 
 <script>
-function openTab(tabName){
-    const sections = document.querySelectorAll('section');
-    sections.forEach(sec => sec.classList.remove('active'));
-    document.getElementById(tabName).classList.add('active');
+    function showScreen(screenId){
+        document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));
+        document.getElementById(screenId).classList.add('active');
+    }
 
-    const tabs = document.querySelectorAll('nav button');
-    tabs.forEach(tab => tab.classList.remove('active'));
-    event.currentTarget.classList.add('active');
-}
+    // Lista de ejercicios de ejemplo
+    const exercises = [
+        {name:"Flexiones", group:"Pecho", premium:false, img:"https://via.placeholder.com/200x150?text=Flexiones"},
+        {name:"Sentadillas", group:"Piernas", premium:false, img:"https://via.placeholder.com/200x150?text=Sentadillas"},
+        {name:"Press de Banca", group:"Pecho", premium:true, img:"https://via.placeholder.com/200x150?text=Press+Banca"},
+        {name:"Curl Bíceps", group:"Brazos", premium:true, img:"https://via.placeholder.com/200x150?text=Curl+Biceps"},
+        {name:"Plancha", group:"Core", premium:false, img:"https://via.placeholder.com/200x150?text=Plancha"},
+    ];
 
-function filtrarEjercicios() {
-    const input = document.getElementById('buscarEjercicio').value.toLowerCase();
-    const ejercicios = document.querySelectorAll('.ejercicio');
-    ejercicios.forEach(ej => {
-        const nombre = ej.getAttribute('data-nombre').toLowerCase();
-        ej.style.display = nombre.includes(input) ? 'block' : 'none';
+    // Mostrar ejercicios
+    const exerciseList = document.getElementById('exerciseList');
+    const addExerciseSelect = document.getElementById('addExerciseSelect');
+    exercises.forEach(ex => {
+        const div = document.createElement('div');
+        div.className="exercise";
+        div.innerHTML=`<img src="${ex.img}" alt="${ex.name}"><h3>${ex.name} ${ex.premium?'<span class="premium">Premium</span>':''}</h3><p>Grupo muscular: ${ex.group}</p>`;
+        exerciseList.appendChild(div);
+
+        const opt = document.createElement('option');
+        opt.value=ex.name;
+        opt.text=ex.name;
+        addExerciseSelect.appendChild(opt);
     });
-}
+
+    // Rutinas prediseñadas
+    const routines = [
+        {name:"Principiante", exercises:["Flexiones","Sentadillas","Plancha"]},
+        {name:"Intermedio", exercises:["Press de Banca","Sentadillas","Curl Bíceps"]},
+    ];
+
+    const routineList = document.getElementById('routineList');
+    routines.forEach(r=>{
+        const div = document.createElement('div');
+        div.className="routine";
+        div.innerHTML=`<h3>${r.name}</h3><ul>${r.exercises.map(e=>"<li>"+e+"</li>").join('')}</ul>`;
+        routineList.appendChild(div);
+    });
+
+    // Crear rutina personalizada
+    let customRoutine = [];
+    function addExerciseToRoutine(){
+        const exName = addExerciseSelect.value;
+        customRoutine.push(exName);
+        renderCustomRoutine();
+    }
+
+    function renderCustomRoutine(){
+        const div = document.getElementById('customRoutineList');
+        div.innerHTML="<h4>Tu Rutina:</h4><ul>"+customRoutine.map(e=>"<li>"+e+"</li>").join('')+"</ul>";
+    }
+
+    function saveRoutine(){
+        if(customRoutine.length===0){alert("Añade ejercicios primero."); return;}
+        routines.push({name: document.getElementById('newRoutineName').value || "Rutina Nueva", exercises: customRoutine});
+        alert("Rutina guardada!");
+        customRoutine=[];
+        renderCustomRoutine();
+        document.getElementById('routineCount').innerText=routines.length;
+        routineList.innerHTML="";
+        routines.forEach(r=>{
+            const div = document.createElement('div');
+            div.className="routine";
+            div.innerHTML=`<h3>${r.name}</h3><ul>${r.exercises.map(e=>"<li>"+e+"</li>").join('')}</ul>`;
+            routineList.appendChild(div);
+        });
+    }
 </script>
 
 </body>
